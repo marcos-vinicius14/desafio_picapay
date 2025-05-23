@@ -1,6 +1,8 @@
 package br.marcos.core.domain;
 
 import br.marcos.core.domain.enums.UserType;
+import br.marcos.core.domain.exceptions.TransferException;
+import br.marcos.core.domain.exceptions.enums.ErroCodeEnum;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -44,13 +46,13 @@ public class Wallet {
         this.balance.add(value);
     }
 
-    public void transfer(BigDecimal amount) {
+    public void transfer(BigDecimal amount) throws TransferException {
         if (this.user.getType() == UserType.SHOPKEEPER) {
-            throw new IllegalArgumentException("You can't transfer a shopkeeper to another user");
+            throw new TransferException(ErroCodeEnum.TR0001.getMessage(), ErroCodeEnum.TR0001.getCode());
         }
 
         if (amount.compareTo(BigDecimal.ZERO) < 0) {
-            throw new IllegalArgumentException("You can't transfer a negative amount");
+            throw new TransferException(ErroCodeEnum.TR0002.getMessage(), ErroCodeEnum.TR0002.getCode());
         }
 
         this.balance.subtract(amount);

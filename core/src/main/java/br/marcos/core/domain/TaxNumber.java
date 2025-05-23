@@ -1,6 +1,7 @@
 package br.marcos.core.domain;
 
 import br.marcos.core.domain.exceptions.TaxNumberException;
+import br.marcos.core.domain.exceptions.enums.ErroCodeEnum;
 
 public class TaxNumber {
     private String value;
@@ -13,7 +14,7 @@ public class TaxNumber {
     }
 
     public void setValue(String value) throws Exception {
-        if (!isValid(value)) throw new TaxNumberException(ErrorCodeEnum.ON0001.getMessage(), ErrorCodeEnum.ON0001.getCode());
+        if (!isValid(value)) throw new TaxNumberException(ErroCodeEnum.ON001.getCode(), ErroCodeEnum.ON001.getMessage());
         this.value = value;
     }
 
@@ -23,14 +24,17 @@ public class TaxNumber {
 
     private Boolean isValid(String taxNumber) throws Exception {
 
-        if (taxNumber.replaceAll("[^0-9]", "").length() == 11 || taxNumber.replaceAll("[^0-9]", "").length() == 14){
-            if (taxNumber.length() == 11){
-                return isCpfValid(taxNumber);
-            }else{
-                return isCnpjValid(taxNumber);
-            }
-        }else {
-            throw new TaxNumberException(ErrorCodeEnum.ON0001.getMessage(), ErrorCodeEnum.ON0001.getCode());
+        String numericTaxNumber = taxNumber.replaceAll("[^0-9]", "");
+        int numericLength = numericTaxNumber.length();
+
+        if (numericLength != 11 && numericLength != 14) {
+            throw new TaxNumberException(ErroCodeEnum.ON001.getCode(), ErroCodeEnum.ON001.getMessage());
+        }
+
+        if (taxNumber.length() == 11) {
+            return isCpfValid(taxNumber);
+        } else {
+            return isCnpjValid(taxNumber);
         }
     }
 
