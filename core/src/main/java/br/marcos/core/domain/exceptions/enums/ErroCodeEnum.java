@@ -3,6 +3,8 @@ package br.marcos.core.domain.exceptions.enums;
 public enum ErroCodeEnum {
 
     ON001("Tax Number is invalid", "0001"),
+    ON002("Tax Number is unvaliable", "0002"),
+    ON003("Email is unvaliable", "0003"),
     TR0001("User shokepeer transfer is unvailible", "0001"),
     TR0002("amount is indisponible", "0002"),
     TRP001("Pin is invalid", "0001"),

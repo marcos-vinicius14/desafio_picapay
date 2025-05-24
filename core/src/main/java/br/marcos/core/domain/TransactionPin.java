@@ -18,11 +18,13 @@ public class TransactionPin {
     public TransactionPin() {
     }
 
-    public TransactionPin(User user, String pin, Boolean isBlocked, Integer attempt) {
+
+
+    public TransactionPin(User user, String pin) throws TransactionPinException {
         this.user = user;
-        this.pin = pin;
-        this.isBlocked = isBlocked;
-        this.attempt = attempt;
+        setPin(pin);
+        this.isBlocked = false;
+        this.attempt = 3;
     }
 
     public TransactionPin(User user, Long pinId, String pin, Integer attempt, Boolean isBlocked, LocalDateTime updatedAt) {
