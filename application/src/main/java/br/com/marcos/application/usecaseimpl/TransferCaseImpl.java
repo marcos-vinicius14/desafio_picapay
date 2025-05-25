@@ -28,8 +28,8 @@ public class TransferCaseImpl implements TransferCase {
 
     @Override
     public Boolean transfer(String toTaxNumber, String fromTaxNumber, BigDecimal value) throws InternalServerErrorExcetion, TransferException {
-        Wallet from = findUserByTaxNumberCase.findUserByTaxNumber(fromTaxNumber);
-        Wallet to = findUserByTaxNumberCase.findUserByTaxNumber(toTaxNumber);
+        Wallet from = findUserByTaxNumberCase.findWalletByTaxNumber(fromTaxNumber);
+        Wallet to = findUserByTaxNumberCase.findWalletByTaxNumber(toTaxNumber);
 
         from.transfer(value);
         to.receiveTransfer(value);

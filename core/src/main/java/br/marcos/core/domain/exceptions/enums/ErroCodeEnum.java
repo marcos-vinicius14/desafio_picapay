@@ -10,6 +10,7 @@ public enum ErroCodeEnum {
     TR0002("amount is indisponible", "0002"),
     TR0003("Error! Transfer failed", "0004"),
     TRP001("Pin is invalid", "0001"),
+    WA0001("Wallet not found", "0001"),
 
     ;
     private String message;
