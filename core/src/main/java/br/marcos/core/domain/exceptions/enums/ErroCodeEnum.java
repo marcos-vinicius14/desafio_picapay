@@ -19,7 +19,9 @@ public enum ErroCodeEnum {
     NO0001("Erro while notifcate user", "0001"),
 
     ATH0001("Acess denied", "0001"),
+
     PIN0001("Pin is blocked", "0001"),
+    PIN0002("Pin is incorrect %d tentativas restantes", "0002"),
 
 
     ;
@@ -45,5 +47,9 @@ public enum ErroCodeEnum {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public static String pin0001GetMessage(Integer attempt) {
+        return String.format(PIN0002.getMessage(), attempt);
     }
 }
