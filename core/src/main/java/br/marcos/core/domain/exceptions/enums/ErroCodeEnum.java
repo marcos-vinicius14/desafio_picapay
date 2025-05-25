@@ -9,10 +9,17 @@ public enum ErroCodeEnum {
 
     TR0001("User shokepeer transfer is unvailible", "0001"),
     TR0002("amount is indisponible", "0002"),
-    TR0003("Error! Transfer failed", "0004"),
+    TR0003("Error! Transfer failed", "0003"),
+    TR0004("Transfer Uhauthorized", "0004"),
+
     TRP001("Pin is invalid", "0001"),
+
     WA0001("Wallet not found", "0001"),
+
     NO0001("Erro while notifcate user", "0001"),
+
+    ATH0001("Acess denied", "0001"),
+
 
     ;
     private String message;
