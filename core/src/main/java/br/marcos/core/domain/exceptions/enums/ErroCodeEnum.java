@@ -6,11 +6,13 @@ public enum ErroCodeEnum {
     ON002("Tax Number is unvaliable", "0002"),
     ON003("Email is unvaliable", "0003"),
     ON004("Internal Server Error", "0004"),
+
     TR0001("User shokepeer transfer is unvailible", "0001"),
     TR0002("amount is indisponible", "0002"),
     TR0003("Error! Transfer failed", "0004"),
     TRP001("Pin is invalid", "0001"),
     WA0001("Wallet not found", "0001"),
+    NO0001("Erro while notifcate user", "0001"),
 
     ;
     private String message;
