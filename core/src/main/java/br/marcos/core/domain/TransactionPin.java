@@ -4,10 +4,10 @@ import br.marcos.core.domain.exceptions.TransactionPinException;
 import br.marcos.core.domain.exceptions.enums.ErroCodeEnum;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class TransactionPin {
     private Long pinId;
-    private  User user;
     private String pin;
     private Integer attempt;
     private Boolean isBlocked;
@@ -20,15 +20,13 @@ public class TransactionPin {
 
 
 
-    public TransactionPin(User user, String pin) throws TransactionPinException {
-        this.user = user;
+    public TransactionPin(String pin) throws TransactionPinException {
         setPin(pin);
         this.isBlocked = false;
         this.attempt = 3;
     }
 
-    public TransactionPin(User user, Long pinId, String pin, Integer attempt, Boolean isBlocked, LocalDateTime updatedAt) {
-        this.user = user;
+    public TransactionPin(Long pinId, String pin, Integer attempt, Boolean isBlocked, LocalDateTime updatedAt) {
         this.pinId = pinId;
         this.pin = pin;
         this.attempt = attempt;
@@ -49,14 +47,6 @@ public class TransactionPin {
 
     public void setPinId(Long pinId) {
         this.pinId = pinId;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public String getPin() {
@@ -98,5 +88,17 @@ public class TransactionPin {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        TransactionPin that = (TransactionPin) o;
+        return Objects.equals(pinId, that.pinId) && Objects.equals(pin, that.pin) && Objects.equals(attempt, that.attempt) && Objects.equals(isBlocked, that.isBlocked) && Objects.equals(createdAt, that.createdAt) && Objects.equals(updatedAt, that.updatedAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pinId, pin, attempt, isBlocked, createdAt, updatedAt);
     }
 }

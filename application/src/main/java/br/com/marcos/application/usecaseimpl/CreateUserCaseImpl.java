@@ -34,7 +34,7 @@ public class CreateUserCaseImpl implements CreateUserCase {
             throw new BadRequestException(ErroCodeEnum.ON003.getMessage(), ErroCodeEnum.ON003.getCode());
         }
 
-        if (!createUserGateway.create(user, new Wallet(user, BigDecimal.ZERO), new TransactionPin(user, pin))) {
+        if (!createUserGateway.create(user, new Wallet(new TransactionPin(pin), BigDecimal.ZERO))) {
             throw new InternalServerErrorExcetion(ErroCodeEnum.ON004.getMessage(), ErroCodeEnum.ON004.getCode());
         };
 

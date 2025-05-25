@@ -6,6 +6,7 @@ import br.marcos.core.domain.exceptions.enums.ErroCodeEnum;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Wallet {
     private Long id;
@@ -13,21 +14,28 @@ public class Wallet {
     private User user;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private TransactionPin transactionPin;
 
     public Wallet() {
     }
 
-    public Wallet(User user, BigDecimal balance) {
+    public Wallet(User user, BigDecimal balance, TransactionPin transactionPin) {
         this.user = user;
         this.balance = balance;
+        this.transactionPin = transactionPin;
+
     }
 
-    public Wallet(Long id, BigDecimal balance, User user, LocalDateTime updatedAt) {
+    public Wallet(Long id, BigDecimal balance, User user, LocalDateTime updatedAt, TransactionPin transactionPin) {
         this.id = id;
         this.balance = balance;
         this.user = user;
         this.createdAt = LocalDateTime.now();
         this.updatedAt = updatedAt;
+        this.transactionPin = transactionPin;
+    }
+
+    public Wallet(TransactionPin transactionPin, BigDecimal zero) {
     }
 
     public Long getId() {
@@ -79,5 +87,25 @@ public class Wallet {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public TransactionPin getTransactionPin() {
+        return transactionPin;
+    }
+
+    public void setTransactionPin(TransactionPin transactionPin) {
+        this.transactionPin = transactionPin;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Wallet wallet = (Wallet) o;
+        return Objects.equals(balance, wallet.balance) && Objects.equals(user, wallet.user) && Objects.equals(createdAt, wallet.createdAt) && Objects.equals(updatedAt, wallet.updatedAt) && Objects.equals(transactionPin, wallet.transactionPin);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(balance, user, createdAt, updatedAt, transactionPin);
     }
 }
