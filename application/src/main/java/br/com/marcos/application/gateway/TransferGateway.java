@@ -1,7 +1,7 @@
-package br.com.marcos.usecase;
+package br.com.marcos.application.gateway;
 
 import br.marcos.core.domain.Transaction;
 
-public interface TransferUserCase {
+public interface TransferGateway {
     Boolean transfer(Transaction transaction);
 }
