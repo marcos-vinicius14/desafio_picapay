@@ -19,6 +19,7 @@ public enum ErroCodeEnum {
     NO0001("Erro while notifcate user", "0001"),
 
     ATH0001("Acess denied", "0001"),
+    PIN0001("Pin is blocked", "0001"),
 
 
     ;
