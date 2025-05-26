@@ -1,0 +1,11 @@
+CREATE TABLE tb_wallet(
+    Id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    CreateAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    UpdateAt DATETIME NOT NULL,
+    Balance DECIMAL(10,2) NOT NULL,
+    UserId UUID NOT NULL UNIQUE,
+    TransactioPin BIGINT NOT NULL UNIQUE,
+
+    FOREIGN KEY (UserId) REFERENCES tb_users(Id),
+    FOREIGN KEY (TransactioPin) REFERENCES tb_transactio_pin(Id)
+);

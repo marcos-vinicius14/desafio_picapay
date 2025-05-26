@@ -1,0 +1,12 @@
+CREATE TABLE tb_transactions(
+    Id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    FromWallet BIGINT NOT NULL,
+    ToWallet BIGINT NOT NULL,
+    TransactionValue DECIMAL(10,2) NOT NULL,
+    Status VARCHAR(30) NOT NULL,
+    CreateAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    UpdatedAt DATETIME NOT NULL,
+
+    FOREIGN KEY (FromWallet) REFERENCES tb_wallet(Id),
+    FOREIGN KEY (ToWallet) REFERENCES tb_wallet(Id)
+);
