@@ -1,6 +1,6 @@
-package br.marcos.repositories;
+package br.marcos.infraescruture.repositories;
 
-import br.marcos.entities.WallletEntity;
+import br.marcos.infraescruture.entities.WallletEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface WalletEntityRepository extends JpaRepository<WallletEntity, Long> {

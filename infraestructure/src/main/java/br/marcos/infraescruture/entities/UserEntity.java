@@ -1,4 +1,4 @@
-package br.marcos.entities;
+package br.marcos.infraescruture.entities;
 
 import br.marcos.core.domain.enums.UserType;
 import jakarta.persistence.*;

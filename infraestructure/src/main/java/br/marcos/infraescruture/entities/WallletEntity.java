@@ -1,4 +1,4 @@
-package br.marcos.entities;
+package br.marcos.infraescruture.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -35,5 +35,11 @@ public class WallletEntity {
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-
+    public WallletEntity(BigDecimal pin, UserEntity balance, TransactionPinEntity createdAt, LocalDateTime updatedAt, LocalDateTime user) {
+        this.pin = pin;
+        this.balance = balance;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.user = user;
+    }
 }

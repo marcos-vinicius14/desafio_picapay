@@ -1,4 +1,4 @@
-package br.marcos.entities;
+package br.marcos.infraescruture.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -34,4 +34,11 @@ public class TransactionPinEntity {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    public TransactionPinEntity(String pin, int attempt, Boolean blocked, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.pin = pin;
+        this.attempt = attempt;
+        this.blocked = blocked;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 }
