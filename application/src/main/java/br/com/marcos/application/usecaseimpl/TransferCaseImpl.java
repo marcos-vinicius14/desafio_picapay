@@ -4,10 +4,7 @@ import br.com.marcos.application.gateway.TransferGateway;
 import br.com.marcos.usecase.*;
 import br.marcos.core.domain.Transaction;
 import br.marcos.core.domain.Wallet;
-import br.marcos.core.domain.exceptions.InternalServerErrorExcetion;
-import br.marcos.core.domain.exceptions.NotFoundException;
-import br.marcos.core.domain.exceptions.NotificationException;
-import br.marcos.core.domain.exceptions.TransferException;
+import br.marcos.core.domain.exceptions.*;
 import br.marcos.core.domain.exceptions.enums.ErroCodeEnum;
 
 import java.math.BigDecimal;
@@ -30,7 +27,7 @@ public class TransferCaseImpl implements TransferCase {
     }
 
     @Override
-    public Boolean transfer(String toTaxNumber, String fromTaxNumber, BigDecimal value, String pin) throws InternalServerErrorExcetion, TransferException, NotFoundException, NotificationException {
+    public Boolean transfer(String toTaxNumber, String fromTaxNumber, BigDecimal value, String pin) throws InternalServerErrorExcetion, TransferException, NotFoundException, NotificationException, PinException {
         Wallet from = findUserByTaxNumberCase.findWalletByTaxNumber(fromTaxNumber);
         Wallet to = findUserByTaxNumberCase.findWalletByTaxNumber(toTaxNumber);
 
