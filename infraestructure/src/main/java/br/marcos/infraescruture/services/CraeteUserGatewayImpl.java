@@ -11,7 +11,9 @@ import br.marcos.infraescruture.mappers.WalletMapper;
 import br.marcos.infraescruture.repositories.TransactionPinEntityRepository;
 import br.marcos.infraescruture.repositories.UserEntityRepository;
 import br.marcos.infraescruture.repositories.WalletEntityRepository;
+import static br.marcos.infraescruture.utils.Utilities.log;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class CraeteUserGatewayImpl implements CreateUserGateway {
@@ -34,11 +36,15 @@ public class CraeteUserGatewayImpl implements CreateUserGateway {
     @Override
     public Boolean create(User user, Wallet wallet) {
         try {
+            log.info(String.format("Initiliaze creation user: %s::CreateUserGatewayImpl", user));
             UserEntity userSaved = userEntityRepository.save(userMapper.toUserEntity(user));
             TransactionPinEntity transactionPinSaved = transactionPinEntityRepository.save(transactionPinMapper.toTransactionPinEntity(wallet.getTransactionPin()));
             walletEntityRepository.save(walletMapper.toWallletEntity(wallet, userSaved, transactionPinSaved));
+
+            log.info(String.format("User: %s created sucess::CreateUserGatewayImpl", user));
             return true;
         } catch (Exception e) {
+            log.error(String.format("Error creating user: %s::CreateUserGatewayImpl", user), e);
             return false;
         }
     }

@@ -13,9 +13,8 @@ public class WalletMapper {
                 wallet.getBalance(),
                 user,
                 transactionPin,
-                wallet.getCreatedAt(),
-                wallet.getUpdatedAt()
-
+                wallet.getUpdatedAt(),
+                wallet.getCreatedAt()
         );
     }
 }

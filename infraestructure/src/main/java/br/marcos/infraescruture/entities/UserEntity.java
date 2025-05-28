@@ -10,8 +10,6 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "tb_users")
 public class UserEntity {
@@ -42,4 +40,18 @@ public class UserEntity {
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
+
+    public UserEntity() {
+    }
+
+    public UserEntity(UUID id, String email, String password, String taxNumber, String fullName, UserType type, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.taxNumber = taxNumber;
+        this.fullName = fullName;
+        this.type = type;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 }

@@ -21,6 +21,7 @@ public class User {
     }
 
     public User(String email, String password, TaxNumber taxNumber, String fullName, UserType type, TransactionPin transactionPin) {
+        this.id = UUID.randomUUID();
         this.email = email;
         this.password = password;
         this.taxNumber = taxNumber;
@@ -37,9 +38,11 @@ public class User {
         this.fullName = fullName;
         this.type = type;
         this.transactionPin = transactionPin;
-        this.createdAt = createdAt;
+        this.createdAt = LocalDateTime.now();
         this.updatedAt = updatedAt;
     }
+
+
 
     public UUID getId() {
         return id;

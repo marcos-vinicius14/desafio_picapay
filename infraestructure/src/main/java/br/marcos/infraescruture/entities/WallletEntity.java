@@ -35,11 +35,18 @@ public class WallletEntity {
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    public WallletEntity(BigDecimal pin, UserEntity balance, TransactionPinEntity createdAt, LocalDateTime updatedAt, LocalDateTime user) {
-        this.pin = pin;
+    public WallletEntity(BigDecimal balance, UserEntity user, TransactionPinEntity transactionPin, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.balance = balance;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.user = user;
+    }
+
+    public WallletEntity(BigDecimal balance, UserEntity user, String pin, LocalDateTime updatedAt, LocalDateTime createdAt) {
+        this.balance = balance;
+        this.user = user;
+        this.pin = pin;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 }

@@ -7,5 +7,5 @@ CREATE TABLE tb_wallet(
     TransactioPin BIGINT NOT NULL UNIQUE,
 
     FOREIGN KEY (UserId) REFERENCES tb_users(Id),
-    FOREIGN KEY (TransactioPin) REFERENCES tb_transactio_pin(Id)
+    FOREIGN KEY (TransactioPin) REFERENCES tb_transaction_pin(Id)
 );

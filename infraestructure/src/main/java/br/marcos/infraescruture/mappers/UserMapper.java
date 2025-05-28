@@ -1,6 +1,8 @@
 package br.marcos.infraescruture.mappers;
 
+import br.marcos.core.domain.TaxNumber;
 import br.marcos.core.domain.User;
+import br.marcos.infraescruture.dto.request.CreateUserRequest;
 import br.marcos.infraescruture.entities.UserEntity;
 import org.springframework.stereotype.Component;
 
@@ -17,5 +19,16 @@ public class UserMapper {
                 user.getCreatedAt(),
                 user.getUpdatedAt()
         );
+    }
+
+    public User toUser(CreateUserRequest request) throws Exception {
+        return new User(
+                request.email(),
+                request.password(),
+                new TaxNumber(request.taxNumber()),
+                request.fullname(),
+                request.type(),
+                request.transactionPin()
+                );
     }
 }
