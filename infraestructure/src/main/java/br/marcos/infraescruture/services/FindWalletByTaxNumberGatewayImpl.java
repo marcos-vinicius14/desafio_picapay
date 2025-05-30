@@ -7,11 +7,11 @@ import br.marcos.infraescruture.repositories.WalletEntityRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FindWalletByTaxNumberGtewayImpl implements FindWalletByTaxNumberGateway {
+public class FindWalletByTaxNumberGatewayImpl implements FindWalletByTaxNumberGateway {
     private final WalletEntityRepository walletEntityRepository;
     private final WalletMapper walletMapper;
 
-    public FindWalletByTaxNumberGtewayImpl(WalletEntityRepository walletEntityRepository, WalletMapper walletMapper) {
+    public FindWalletByTaxNumberGatewayImpl(WalletEntityRepository walletEntityRepository, WalletMapper walletMapper) {
         this.walletEntityRepository = walletEntityRepository;
         this.walletMapper = walletMapper;
     }
