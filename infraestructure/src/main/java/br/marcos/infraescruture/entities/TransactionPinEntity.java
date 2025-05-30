@@ -1,16 +1,12 @@
 package br.marcos.infraescruture.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "tb_transaction_pin")
 public class TransactionPinEntity {
@@ -33,6 +29,9 @@ public class TransactionPinEntity {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    public TransactionPinEntity() {
+    }
 
     public TransactionPinEntity(String pin, int attempt, Boolean blocked, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.pin = pin;

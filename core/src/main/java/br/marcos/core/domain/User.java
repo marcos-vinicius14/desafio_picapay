@@ -13,31 +13,28 @@ public class User {
     private TaxNumber taxNumber;
     private String fullName;
     private UserType type;
-    private TransactionPin transactionPin;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
     public User() {
     }
 
-    public User(String email, String password, TaxNumber taxNumber, String fullName, UserType type, TransactionPin transactionPin) {
+    public User(String email, String password, TaxNumber taxNumber, String fullName, UserType type) {
         this.id = UUID.randomUUID();
         this.email = email;
         this.password = password;
         this.taxNumber = taxNumber;
         this.fullName = fullName;
         this.type = type;
-        this.transactionPin = transactionPin;
     }
 
-    public User(UUID id, String email, String password, TaxNumber taxNumber, String fullName, UserType type, TransactionPin transactionPin, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public User(UUID id, String email, String password, TaxNumber taxNumber, String fullName, UserType type, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.taxNumber = taxNumber;
         this.fullName = fullName;
         this.type = type;
-        this.transactionPin = transactionPin;
         this.createdAt = LocalDateTime.now();
         this.updatedAt = updatedAt;
     }
@@ -66,21 +63,6 @@ public class User {
 
     public UserType getType() {
         return type;
-    }
-
-    public TransactionPin getTransactionPin() {
-        return transactionPin;
-    }
-
-    public void transactionPinIsValid(String transactionPin) {
-        if (transactionPin.length() != 8) {
-            throw new IllegalArgumentException('\'' + transactionPin + "' is not a valid transaction pin");
-        }
-    }
-
-    public void setTransactionPin(TransactionPin transactionPin) {
-        transactionPinIsValid(transactionPin.toString());
-        this.transactionPin = transactionPin;
     }
 
     public LocalDateTime getCreatedAt() {

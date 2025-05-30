@@ -16,7 +16,7 @@ public class Wallet {
     private LocalDateTime updatedAt;
     private TransactionPin transactionPin;
 
-    public Wallet() {
+    public Wallet(int id, TransactionPin transactionPin, BigDecimal balance, User user, LocalDateTime createdAt, LocalDateTime updatedAt) {
     }
 
     public Wallet(User user, BigDecimal balance, TransactionPin transactionPin) {

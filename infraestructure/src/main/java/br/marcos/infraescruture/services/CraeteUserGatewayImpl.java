@@ -12,6 +12,8 @@ import br.marcos.infraescruture.repositories.TransactionPinEntityRepository;
 import br.marcos.infraescruture.repositories.UserEntityRepository;
 import br.marcos.infraescruture.repositories.WalletEntityRepository;
 import static br.marcos.infraescruture.utils.Utilities.log;
+
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 
@@ -34,6 +36,7 @@ public class CraeteUserGatewayImpl implements CreateUserGateway {
     }
 
     @Override
+    @Transactional
     public Boolean create(User user, Wallet wallet) {
         try {
             log.info(String.format("Initiliaze creation user: %s::CreateUserGatewayImpl", user));
