@@ -18,6 +18,16 @@ public class Transaction {
     public Transaction() {
     }
 
+    public Transaction(Long id, Wallet fromWallet, Wallet toWallet, BigDecimal value, TransactionStatusEnum status, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.id = id;
+        this.fromWallet = fromWallet;
+        this.toWallet = toWallet;
+        this.value = value;
+        this.status = status;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
     public Transaction(Wallet fromWallet, Wallet toWallet, BigDecimal value) {
         this.fromWallet = fromWallet;
         this.toWallet = toWallet;
