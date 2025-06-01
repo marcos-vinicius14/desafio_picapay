@@ -1,9 +1,10 @@
 package br.com.marcos.usecase;
 
-import br.marcos.core.domain.Wallet;
+
+import br.marcos.core.domain.exceptions.NotFoundException;
 
 import java.math.BigDecimal;
 
 public interface UserConsultBalanceCase {
-    BigDecimal consultBalance(Wallet wallet);
+    BigDecimal consultBalance(String taxNumber) throws NotFoundException;
 }

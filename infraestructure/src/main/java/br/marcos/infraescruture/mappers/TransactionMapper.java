@@ -3,7 +3,9 @@ package br.marcos.infraescruture.mappers;
 import br.marcos.core.domain.Transaction;
 import br.marcos.core.domain.enums.TransactionStatusEnum;
 import br.marcos.infraescruture.entities.TransactionEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TransactionMapper {
 
     private final WalletMapper walletMapper;
@@ -43,6 +45,30 @@ public class TransactionMapper {
                 transactionEntity.getStatus(),
                 transactionEntity.getCreatedAt(),
                 transactionEntity.getUpdatedAt()
+        );
+    }
+
+    public TransactionEntity toConcludeTransaction(Transaction transaction) {
+        return new TransactionEntity(
+                transaction.getId(),
+                walletMapper.toWallletEntity(transaction.getFromWallet()),
+                walletMapper.toWallletEntity(transaction.getToWallet()),
+                transaction.getValue(),
+                TransactionStatusEnum.SUCCESS,
+                transaction.getCreatedAt(),
+                transaction.getUpdatedAt()
+        );
+    }
+
+    public TransactionEntity toCancelTransaction(Transaction transaction) {
+        return new TransactionEntity(
+                transaction.getId(),
+                walletMapper.toWallletEntity(transaction.getFromWallet()),
+                walletMapper.toWallletEntity(transaction.getToWallet()),
+                transaction.getValue(),
+                TransactionStatusEnum.CANCELLED,
+                transaction.getCreatedAt(),
+                transaction.getUpdatedAt()
         );
     }
 }
