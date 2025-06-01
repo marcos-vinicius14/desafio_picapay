@@ -1,12 +1,12 @@
 package br.marcos.infraescruture.controllers;
 
+import br.com.marcos.usecase.TransferCase;
 import br.com.marcos.usecase.UserConsultBalanceCase;
+import br.marcos.infraescruture.dto.request.TransferRequest;
 import br.marcos.infraescruture.dto.response.BaseResponse;
 import br.marcos.infraescruture.dto.response.ConsultBalanceResponse;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import static br.marcos.infraescruture.utils.Utilities.log;
 
 import java.math.BigDecimal;
@@ -15,9 +15,11 @@ import java.math.BigDecimal;
 @RequestMapping("api/v1/wallet")
 public class WalletController {
     private final UserConsultBalanceCase consultBalanceCase;
+    private final TransferCase transferCase;
 
-    public WalletController(UserConsultBalanceCase consultBalanceCase) {
+    public WalletController(UserConsultBalanceCase consultBalanceCase, TransferCase transferCase) {
         this.consultBalanceCase = consultBalanceCase;
+        this.transferCase = transferCase;
     }
 
     @GetMapping("/consult/{taxNumber}")
@@ -36,5 +38,10 @@ public class WalletController {
             log.error("Error while consult balance for tax number {} :: {}", taxNumber, e.getMessage());
             return BaseResponse.<ConsultBalanceResponse>builder().result(new ConsultBalanceResponse(BigDecimal.ZERO)).build();
         }
+    }
+
+    @PostMapping("/transfer")
+    public BaseResponse<String> transfer(@RequestBody TransferRequest transfer) {
+        transferCase.transfer(transfer.fromTaxNumber(), transfer.toTaxNumber(), transfer.value(), transfer.pin());
     }
 }

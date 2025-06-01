@@ -4,6 +4,7 @@ import br.com.marcos.application.gateway.UserNotificationGateway;
 import br.com.marcos.usecase.UserNotificationCase;
 import br.marcos.core.domain.Transaction;
 
+
 public class UserNotificationCaseImpl implements UserNotificationCase {
     private final UserNotificationGateway userNotificationGateway;
 
